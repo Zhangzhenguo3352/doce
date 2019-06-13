@@ -40,6 +40,6 @@ app.get('*', function(req, res) {
     })
     res.send()
 })
-app.listen(9090, () => {
-    console.log(9090)
+app.listen(80, () => {
+    console.log(80)
 })
