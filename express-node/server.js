@@ -6,8 +6,8 @@ var app = express();
 
 
 
-app.use(express.static('public'))
 
+app.use(express.static('public'))
 app.get('*', function(req, res) {
     fs.readFile('./data.txt', function (error, data) {
         // <Buffer 68 65 6c 6c 6f 20 6e 6f 64 65 6a 73 0d 0a>
@@ -28,6 +28,7 @@ app.get('*', function(req, res) {
             let n = Number(data.toString())
             n++
             fs.writeFile('./data.txt', n, function (error) {
+                
                 // console.log('文件写入成功')
                 // console.log(error)
                 if (error) {
@@ -35,11 +36,13 @@ app.get('*', function(req, res) {
                 } else {
                 console.log('写入成功了')
                 }
+                res.send()
             })
         }
     })
-    res.send()
 })
+
+
 app.listen(80, () => {
     console.log(80)
 })
